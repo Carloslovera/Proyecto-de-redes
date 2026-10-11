@@ -137,6 +137,7 @@ PFO2-Sistema-Tareas/
 - **Base de datos:** SQLite
 - **Hashing:** werkzeug.security
 - **Cliente HTTP:** requests
+- **Se realizo un cambio de la letra ñ por la letra n en contraseñas para evitar errores futuros:**
 
 ---
 
