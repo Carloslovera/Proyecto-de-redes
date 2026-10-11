@@ -109,7 +109,7 @@ Hashear contraseñas es una medida de seguridad fundamental por las siguientes r
 
 Este proyecto está documentado y disponible en GitHub Pages:
 
-🔗 **URL de la documentación:** [https://TU-USUARIO.github.io/TU-REPOSITORIO/](https://TU-USUARIO.github.io/TU-REPOSITORIO/)
+🔗 **URL de la documentación:** https://carloslovera.github.io/Proyecto-de-redes/
 
 ---
 
