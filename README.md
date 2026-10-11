@@ -4,7 +4,7 @@
 - **Nombre:** Carlos Lovera
 - **Curso:** Programacion de Redes Seccion "D"
 - **Fecha:** Octubre 2026
-- **Repositorio:** [Link a tu repositorio de GitHub]
+- **Repositorio:** https://github.com/Carloslovera/Proyecto-de-redes.git
 
 ---
 
