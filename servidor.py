@@ -21,7 +21,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS usuarios (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             usuario TEXT UNIQUE NOT NULL,
-            contraseña TEXT NOT NULL
+            contrasena TEXT NOT NULL
         )
     ''')
     conn.commit()
@@ -33,19 +33,19 @@ def init_db():
 @app.route('/registro', methods=['POST'])
 def registro():
     data = request.get_json()
-    if not data or 'usuario' not in data or 'contraseña' not in data:
-        return jsonify({"error": "Faltan datos (usuario y contraseña)"}), 400
+    if not data or 'usuario' not in data or 'contrasena' not in data:
+        return jsonify({"error": "Faltan datos (usuario y contrasena)"}), 400
 
     usuario = data['usuario']
-    contraseña = data['contraseña']
+    contrasena = data['contrasena']
 
     # Hashear la contraseña (¡Nunca en texto plano!)
-    contraseña_hash = generate_password_hash(contraseña)
+    contrasena_hash = generate_password_hash(contrasena)
 
     conn = get_db()
     try:
-        conn.execute('INSERT INTO usuarios (usuario, contraseña) VALUES (?, ?)',
-                     (usuario, contraseña_hash))
+        conn.execute('INSERT INTO usuarios (usuario, contrasena) VALUES (?, ?)',
+                    (usuario, contrasena_hash))
         conn.commit()
         return jsonify({"mensaje": "Usuario registrado exitosamente"}), 201
     except sqlite3.IntegrityError:
@@ -57,17 +57,17 @@ def registro():
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    if not data or 'usuario' not in data or 'contraseña' not in data:
+    if not data or 'usuario' not in data or 'contrasena' not in data:
         return jsonify({"error": "Faltan credenciales"}), 400
 
     usuario = data['usuario']
-    contraseña = data['contraseña']
+    contrasena = data['contrasena']
 
     conn = get_db()
     user = conn.execute('SELECT * FROM usuarios WHERE usuario = ?', (usuario,)).fetchone()
     conn.close()
 
-    if user and check_password_hash(user['contraseña'], contraseña):
+    if user and check_password_hash(user['contrasena'], contrasena):
         # Generamos un token simple para simular el acceso a las tareas
         token = secrets.token_hex(16)
         return jsonify({

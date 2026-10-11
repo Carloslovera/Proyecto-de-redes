@@ -27,22 +27,22 @@ def menu():
 def registrar():
     print("\n-- Registro --")
     usuario = input("Nombre de usuario: ")
-    contraseña = input("Contraseña: ")
+    contrasena = input("Contrasena: ")
     
     response = requests.post(f"{URL_BASE}/registro", json={
         "usuario": usuario,
-        "contraseña": contraseña
+        "contrasena": contrasena
     })
     print("Respuesta del servidor:", response.json())
 
 def login():
     print("\n-- Login --")
     usuario = input("Nombre de usuario: ")
-    contraseña = input("Contraseña: ")
+    contrasena = input("Contrasena: ")
     
     response = requests.post(f"{URL_BASE}/login", json={
         "usuario": usuario,
-        "contraseña": contraseña
+        "contrasena": contrasena
     })
     print("Respuesta del servidor:", response.json())
 
